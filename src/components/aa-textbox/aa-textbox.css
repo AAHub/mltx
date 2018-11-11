@@ -1,0 +1,10 @@
+.textbox {
+  position: absolute;
+}
+.aa {
+  font-family: "aahub";
+  display: block;
+  font-size: 16px;
+  line-height: 15px;
+  white-space: pre;
+}

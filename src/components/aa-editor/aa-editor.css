@@ -1,0 +1,7 @@
+.editor-wrapper {
+  position: relative;
+  display: flex;
+}
+.editor-area {
+  width: 100%;
+}

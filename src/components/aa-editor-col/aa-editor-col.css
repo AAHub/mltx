@@ -1,0 +1,11 @@
+.col-wrapper {
+  padding-left: 40px;
+  display: flex;
+  width: 15px;
+  font-size: 14px;
+  background-color: #eee;
+}
+.col {
+  text-align: right;
+  background-color: #eee;
+}
