@@ -1,34 +1,57 @@
 import { TypeKeys, ActionTypes } from "../actions/index";
+import { generateKey } from "../../helpers/utils";
 
-interface ContentState {
+export interface ContentState {
+  res: Res[];
+}
+
+export interface Res {
   row: number;
-  splits: number[];
   blocks: Block[];
 }
-interface Block {
+
+export interface Block {
+  key: string;
   x: number;
   y: number;
   text: string;
 }
 
-const getInitialState = () => {
+export const getInitialState = () => {
   return {
-    row: 10,
-    splits: [5],
-    blocks: [getInitialBlock()]
+    res: [getInitialRes()]
   };
 };
 
-const getInitialBlock = (
-  x: number = 2,
-  y: number = 0,
+export const getInitialRes = () => {
+  return {
+    row: 10,
+    blocks: [
+      getInitialBlock(
+        0,
+        3,
+        `　 ∧＿∧ 　
+　（　´∀｀）
+　（　　　　） 
+　｜ ｜　| 
+　（_＿）＿）`
+      )
+    ]
+  };
+};
+
+export const getInitialBlock = (
+  x: number = 0,
+  y: number = 3,
   text: string = `　 ∧＿∧ 　
 　（　´∀｀）
 　（　　　　） 
 　｜ ｜　| 
 　（_＿）＿）`
 ) => {
+  const key = generateKey();
   return {
+    key: key,
     x: x,
     y: y,
     text: text
@@ -39,6 +62,18 @@ const app = (state: ContentState = getInitialState(), action: ActionTypes) => {
     case TypeKeys.CREATE_EMPTY: {
       const init: ContentState = getInitialState();
       return init;
+    }
+    case TypeKeys.CONTENT_SET_BLOCK: {
+      const newBlock = action.block;
+      console.log(newBlock);
+      let res = state.res;
+      for (let i = 0; i < res[0].blocks.length; i++) {
+        if (res[0].blocks[i].key == newBlock.key) {
+          res[0].blocks[i] = newBlock;
+        }
+      }
+      console.log(res[0]);
+      return { ...state, res: res };
     }
   }
 

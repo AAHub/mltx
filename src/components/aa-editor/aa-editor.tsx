@@ -6,9 +6,7 @@ import { Store } from "@stencil/redux";
   styleUrl: "aa-editor.css"
 })
 export class AAEditorComponent {
-  @State() blocks: any;
-  @State() row: number;
-  @State() splits: any;
+  @State() res: any;
 
   @Prop({ context: "store" })
   store: Store;
@@ -16,13 +14,13 @@ export class AAEditorComponent {
   componentWillLoad() {
     this.store.mapStateToProps(this, state => {
       const {
-        ContentState: { blocks, row, splits }
+        ContentState: { res }
       } = state;
+      console.log(res);
+      const r = res[0];
 
       return {
-        blocks,
-        row,
-        splits
+        res: r
       };
     });
   }
@@ -33,15 +31,14 @@ export class AAEditorComponent {
         <aa-editor-col />
         <div class="editor-wrapper">
           <div class="info-wrapper">
-            <aa-editor-row row={this.row} />
-            <aa-editor-divider splits={this.splits} />
+            <aa-editor-row row={this.res.row} />
           </div>
           <div class="editor-area" role="editor-area">
             {(() => {
               let textbox = [];
-              for (let idx = 0; idx < this.blocks.length; idx++) {
-                const block = this.blocks[idx];
-                textbox.push(<aa-textbox block={block} idx={idx} />);
+              for (let idx = 0; idx < this.res.blocks.length; idx++) {
+                const block = this.res.blocks[idx];
+                textbox.push(<aa-textbox block={block} text={block.text} idx={idx} />);
               }
               return textbox;
             })()}

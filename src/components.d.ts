@@ -34,20 +34,15 @@ export namespace Components {
   interface AaEditor {}
   interface AaEditorAttributes extends StencilHTMLAttributes {}
 
-  interface AaTextarea {
-    're': any;
-  }
-  interface AaTextareaAttributes extends StencilHTMLAttributes {
-    're'?: any;
-  }
-
   interface AaTextbox {
     'block': any;
     'idx': number;
+    'text': string;
   }
   interface AaTextboxAttributes extends StencilHTMLAttributes {
     'block'?: any;
     'idx'?: number;
+    'text'?: string;
   }
 
   interface AppHome {}
@@ -63,7 +58,6 @@ declare global {
     'AaEditorDivider': Components.AaEditorDivider;
     'AaEditorRow': Components.AaEditorRow;
     'AaEditor': Components.AaEditor;
-    'AaTextarea': Components.AaTextarea;
     'AaTextbox': Components.AaTextbox;
     'AppHome': Components.AppHome;
     'AppRoot': Components.AppRoot;
@@ -74,7 +68,6 @@ declare global {
     'aa-editor-divider': Components.AaEditorDividerAttributes;
     'aa-editor-row': Components.AaEditorRowAttributes;
     'aa-editor': Components.AaEditorAttributes;
-    'aa-textarea': Components.AaTextareaAttributes;
     'aa-textbox': Components.AaTextboxAttributes;
     'app-home': Components.AppHomeAttributes;
     'app-root': Components.AppRootAttributes;
@@ -105,12 +98,6 @@ declare global {
     new (): HTMLAaEditorElement;
   };
 
-  interface HTMLAaTextareaElement extends Components.AaTextarea, HTMLStencilElement {}
-  var HTMLAaTextareaElement: {
-    prototype: HTMLAaTextareaElement;
-    new (): HTMLAaTextareaElement;
-  };
-
   interface HTMLAaTextboxElement extends Components.AaTextbox, HTMLStencilElement {}
   var HTMLAaTextboxElement: {
     prototype: HTMLAaTextboxElement;
@@ -134,7 +121,6 @@ declare global {
     'aa-editor-divider': HTMLAaEditorDividerElement
     'aa-editor-row': HTMLAaEditorRowElement
     'aa-editor': HTMLAaEditorElement
-    'aa-textarea': HTMLAaTextareaElement
     'aa-textbox': HTMLAaTextboxElement
     'app-home': HTMLAppHomeElement
     'app-root': HTMLAppRootElement
@@ -145,7 +131,6 @@ declare global {
     'aa-editor-divider': HTMLAaEditorDividerElement;
     'aa-editor-row': HTMLAaEditorRowElement;
     'aa-editor': HTMLAaEditorElement;
-    'aa-textarea': HTMLAaTextareaElement;
     'aa-textbox': HTMLAaTextboxElement;
     'app-home': HTMLAppHomeElement;
     'app-root': HTMLAppRootElement;
