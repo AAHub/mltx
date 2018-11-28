@@ -2,5 +2,13 @@
   position: absolute;
 }
 .aa {
+  position: absolute;
+  display: inline-block;
   white-space: pre;
+}
+div[contenteditable]:focus {
+  outline: 0px solid transparent;
+}
+.aa.focus {
+  border: 1px solid #333;
 }

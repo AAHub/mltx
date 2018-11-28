@@ -35,6 +35,15 @@ export const getInitialRes = () => {
 　（　　　　） 
 　｜ ｜　| 
 　（_＿）＿）`
+      ),
+      getInitialBlock(
+        20,
+        5,
+        `　 ∧＿∧ 　
+　（　´∀｀）
+　（　　　　） 
+　｜ ｜　| 
+　（_＿）＿）`
       )
     ]
   };
