@@ -26,7 +26,7 @@ export class AppHome {
     return [
       <ion-header>
         <ion-toolbar color="primary">
-          <ion-title>MLTX-Editor</ion-title>
+          <ion-title>MLTX-Editor ver0.4</ion-title>
         </ion-toolbar>
       </ion-header>,
 
