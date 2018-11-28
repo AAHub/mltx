@@ -43,8 +43,13 @@ export class AATextAreaComponent {
     this.moveEnd(ev);
   }
 
+  @Listen("touchend")
+  handleScrollTouchEnd(ev) {
+    this.moveEnd(ev);
+  }
+
   async moveStart(key: string) {
-    console.log(key);
+    console.log("moveStart:", key);
     if (!this.moved && key != "") {
       this.moved = true;
     }
@@ -69,7 +74,12 @@ export class AATextAreaComponent {
   @Listen("touchmove")
   handleScrollTouchMove(ev) {
     console.log(ev);
-    this.move(0, 0);
+    if (ev.targetTouches) {
+      if (ev.targetTouches[0]) {
+        const touch = ev.targetTouches[0];
+        this.move(touch.clientX - 50, touch.clientY - 61);
+      }
+    }
   }
 
   async move(x: number = 0, y: number = 0) {
@@ -145,6 +155,7 @@ export class AATextAreaComponent {
                     visibility: visible
                   }}
                   onMouseDown={() => this.moveStart(block.key)}
+                  onTouchStart={() => this.moveStart(block.key)}
                 >
                   AA
                 </div>
